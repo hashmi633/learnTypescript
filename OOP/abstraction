@@ -1,0 +1,45 @@
+bstract class Employee {
+  firstName: string;
+  lastName: string;
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  abstract getStipend(): number
+  getFullName(): string {
+    console.log(`${this.firstName} ${this.lastName}`); // should use with return statement but not working
+  }
+
+  getcompensation(): string {
+    console.log(`${this.firstName} makes ${this.getStipend()} a month`); // should use with return statement but not working
+  }
+}
+
+class FullTimeEpmployee extends Employee {
+  stipend: number;
+  constructor(firstName: string, lastName: string, stipend: number) {
+    super(firstName, lastName);
+    this.stipend = stipend;
+  }
+  getStipend(): number {
+    return this.stipend;
+  }
+}
+
+class Contractor extends Employee {
+  hours: number;
+  rate: number;
+  constructor(firstName: string, lastName: string, rate: number, hours: number) {
+    super(firstName, lastName);
+    this.rate = rate;
+    this.hours = hours;
+  }
+  getStipend(): number {
+    return this.hours * this.rate;
+  }
+}
+const a = new FullTimeEpmployee("Abdur Rehman", "Hashmi", 6000);
+const b = new Contractor("Sufyan", "Makki", 6000, 120);
+a.getcompensation();
+b.getcompensation();
